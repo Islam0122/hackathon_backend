@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'apps.basemodel',
     'apps.Patient',
+    'apps.Entry',
     'corsheaders'
 ]
 
