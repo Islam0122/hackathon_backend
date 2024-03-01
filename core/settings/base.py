@@ -26,14 +26,19 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_yasg',
     'phonenumber_field',
+<<<<<<< HEAD
     'apps.basemodel',
     'apps.Patient',
+=======
+    'corsheaders'
+>>>>>>> f537004b3edf29a9e5e94a3d5c214b80258b2893
 ]
 
 # Промежуточные программы
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -90,3 +95,5 @@ else:
 
 # Импорт настроек для админ-панели Jazzmin
 from .jazzmin import JAZZMIN_SETTINGS
+
+CORS_ORIGIN_ALLOW_ALL = True
