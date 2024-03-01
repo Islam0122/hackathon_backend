@@ -26,12 +26,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_yasg',
     'phonenumber_field',
-<<<<<<< HEAD
     'apps.basemodel',
     'apps.Patient',
-=======
     'corsheaders'
->>>>>>> f537004b3edf29a9e5e94a3d5c214b80258b2893
 ]
 
 # Промежуточные программы
