@@ -1,14 +1,13 @@
 from django.contrib import admin
 from django.utils.html import format_html
 
-from .models import Entry
+from .models import Category, Entry
 
 
-@admin.register(Entry)
 class EntryAdmin(admin.ModelAdmin):
-    list_display = ('title', 'created_at', 'updated_at')
-    search_fields = ['title', 'text']
-    list_filter = ['title']
+    list_display = ('title', 'category', 'id')
+    list_filter = ('category',)
+    search_fields = ('title', 'category__name')
 
     def image_(self, obj):
         return format_html('<img src="{}" width="100%" height="100%" />'.format(obj.photo.url))
@@ -17,7 +16,7 @@ class EntryAdmin(admin.ModelAdmin):
 
     fieldsets = [
         ('Основная информация', {
-            'fields': ['image_', 'photo', 'title', 'text']
+            'fields': ['image_', 'photo', 'title','category', 'text']
         }),
         ('Дополнительная информация', {
             'fields': ('created_at',),
@@ -26,3 +25,12 @@ class EntryAdmin(admin.ModelAdmin):
 
     ]
     readonly_fields = ['image_', 'created_at', 'updated_at']
+
+
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('name', 'parent_category')
+    search_fields = ('name',)
+
+
+admin.site.register(Entry, EntryAdmin)
+admin.site.register(Category, CategoryAdmin)

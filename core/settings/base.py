@@ -25,11 +25,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'drf_yasg',
+    'corsheaders',
     'phonenumber_field',
     'apps.basemodel',
     'apps.Patient',
     'apps.Entry',
-    'corsheaders'
 ]
 
 # Промежуточные программы
