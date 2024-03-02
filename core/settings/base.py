@@ -27,8 +27,10 @@ INSTALLED_APPS = [
     'drf_yasg',
     'phonenumber_field',
     'apps.basemodel',
-    'apps.Patient',
-    'corsheaders'
+    'apps.Chat.Patient',
+    'apps.Chat.gpt',
+    'corsheaders',
+    'drf_spectacular',
 ]
 
 # Промежуточные программы
@@ -81,8 +83,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = env('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+# EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+# EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 
 # Условный импорт настроек для окружений
 if DEBUG:
@@ -94,3 +96,16 @@ else:
 from .jazzmin import JAZZMIN_SETTINGS
 
 CORS_ORIGIN_ALLOW_ALL = True
+
+REST_FRAMEWORK = {
+    # YOUR SETTINGS
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Your Project API',
+    'DESCRIPTION': 'Your project description',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    # OTHER SETTINGS
+}
